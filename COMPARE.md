@@ -1,5 +1,10 @@
 `<HLL Lib> <num items> <error rate %> <serialized size> <time ms>`
 
+PjHLL needs minimal space to store serialized data of HLL counter.
+AtsHLL is the fastest library, but also need the largest space to store the serialized data.
+AkHLL has the worst union accuracy.
+
+
 `mvn package exec:java -Dexec.mainClass="com.github.ddth.hll.qnd.QndCompare" -Dexec.classpathScope=test -DnumItems=1000 -DmaxItemValue=1000000 -DnumDataSets=30`
 ```
 ===== Final: 29586  ===============
