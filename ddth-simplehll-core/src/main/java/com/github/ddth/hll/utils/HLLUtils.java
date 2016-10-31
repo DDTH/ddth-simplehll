@@ -1,6 +1,11 @@
-package com.github.ddth.hll;
+package com.github.ddth.hll.utils;
 
 import java.util.Arrays;
+
+import com.github.ddth.hll.IHLL;
+import com.github.ddth.hll.impl.AkHLL;
+import com.github.ddth.hll.impl.AtsHLL;
+import com.github.ddth.hll.impl.PjHLL;
 
 /**
  * @author Thanh Nguyen <btnguyen2k@gmail.com>

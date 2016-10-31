@@ -4,10 +4,10 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.github.ddth.hll.AkHLL;
-import com.github.ddth.hll.AtsHLL;
 import com.github.ddth.hll.IHLL;
-import com.github.ddth.hll.PjHLL;
+import com.github.ddth.hll.impl.AkHLL;
+import com.github.ddth.hll.impl.AtsHLL;
+import com.github.ddth.hll.impl.PjHLL;
 
 public class QndCompare {
 

@@ -1,7 +1,7 @@
 package com.github.ddth.hll.qnd;
 
 import com.github.ddth.hll.IHLL;
-import com.github.ddth.hll.PjHLL;
+import com.github.ddth.hll.impl.PjHLL;
 
 public class QndPjHLL extends BaseQnd {
 

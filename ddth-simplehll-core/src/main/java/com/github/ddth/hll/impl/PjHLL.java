@@ -1,10 +1,11 @@
-package com.github.ddth.hll;
+package com.github.ddth.hll.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+import com.github.ddth.hll.IHLL;
 import com.github.ddth.hll.prasanthj.HyperLogLog;
 import com.github.ddth.hll.prasanthj.HyperLogLogUtils;
 
@@ -30,6 +31,22 @@ public class PjHLL implements IHLL {
         }
         if (numHashBits != 0) {
             this.numHashBits = numHashBits;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PjHLL clone() {
+        try {
+            PjHLL clone = (PjHLL) super.clone();
+            if (hll != null) {
+                clone.init(this.toBytes());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -89,6 +106,7 @@ public class PjHLL implements IHLL {
         }
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             HyperLogLogUtils.serializeHLL(baos, hll);
+            baos.flush();
             return baos.toByteArray();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -114,7 +132,7 @@ public class PjHLL implements IHLL {
     @Override
     public IHLL init(byte[] data) {
         try (ByteArrayInputStream bais = new ByteArrayInputStream(data)) {
-            hll = HyperLogLogUtils.deserializeHLL(null);
+            hll = HyperLogLogUtils.deserializeHLL(bais);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -6,7 +6,7 @@ package com.github.ddth.hll;
  * @author Thanh Nguyen <btnguyen2k@gmail.com>
  * @since 0.1.0
  */
-public interface IHLL {
+public interface IHLL extends Cloneable {
 
     /**
      * Serializes this HLL to byte array.
@@ -54,4 +54,11 @@ public interface IHLL {
      */
     public IHLL merge(IHLL hll);
 
+    /**
+     * Clones this HLL.
+     * 
+     * @return
+     * @since 0.1.2
+     */
+    public IHLL clone();
 }

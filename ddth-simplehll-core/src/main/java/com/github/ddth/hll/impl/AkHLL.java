@@ -1,8 +1,9 @@
-package com.github.ddth.hll;
+package com.github.ddth.hll.impl;
 
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 
+import com.github.ddth.hll.IHLL;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
@@ -31,6 +32,23 @@ public class AkHLL implements IHLL {
         }
         if (regWidth != 0) {
             this.regWidth = regWidth;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public AkHLL clone() {
+        try {
+            AkHLL clone = (AkHLL) super.clone();
+            clone.hf = Hashing.murmur3_128((int) (System.currentTimeMillis() / 1000));
+            if (hll != null) {
+                clone.init(this.toBytes());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -102,7 +120,7 @@ public class AkHLL implements IHLL {
 
     private static int reflectGetLog2m(HLL hll) {
         try {
-            Field field = HLL.class.getField("log2m");
+            Field field = HLL.class.getDeclaredField("log2m");
             field.setAccessible(true);
             Object value = field.get(hll);
             return value instanceof Number ? ((Number) value).intValue() : 0;
@@ -115,7 +133,7 @@ public class AkHLL implements IHLL {
 
     private static int reflectGetRegWidth(HLL hll) {
         try {
-            Field field = HLL.class.getField("regwidth");
+            Field field = HLL.class.getDeclaredField("regwidth");
             field.setAccessible(true);
             Object value = field.get(hll);
             return value instanceof Number ? ((Number) value).intValue() : 0;

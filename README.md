@@ -23,7 +23,7 @@ Third party libraries are distributed under their own license(s).
 
 ## Installation ##
 
-Latest release version: `0.1.1`. See [RELEASE-NOTES.md](RELEASE-NOTES.md).
+Latest release version: `0.1.2`. See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 
 Maven dependency: if only a sub-set of `ddth-simplehll` functionality is used, choose the corresponding
 dependency artifact(s) to reduce the number of unused jar files.
@@ -34,7 +34,7 @@ dependency artifact(s) to reduce the number of unused jar files.
 <dependency>
 	<groupId>com.github.ddth</groupId>
 	<artifactId>ddth-simplehll-core</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.2</version>
 </dependency>
 ```
 
@@ -44,7 +44,7 @@ dependency artifact(s) to reduce the number of unused jar files.
 <dependency>
     <groupId>com.github.ddth</groupId>
     <artifactId>ddth-simplehll-al</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <type>pom</type>
 </dependency>
 ```
@@ -55,7 +55,7 @@ dependency artifact(s) to reduce the number of unused jar files.
 <dependency>
     <groupId>com.github.ddth</groupId>
     <artifactId>ddth-simplehll-ats</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <type>pom</type>
 </dependency>
 ```
@@ -66,7 +66,7 @@ dependency artifact(s) to reduce the number of unused jar files.
 <dependency>
     <groupId>com.github.ddth</groupId>
     <artifactId>ddth-simplehll-all</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <type>pom</type>
 </dependency>
 ```

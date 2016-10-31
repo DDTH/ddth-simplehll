@@ -1,10 +1,11 @@
-package com.github.ddth.hll;
+package com.github.ddth.hll.impl;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 
 import com.clearspring.analytics.stream.cardinality.CardinalityMergeException;
 import com.clearspring.analytics.stream.cardinality.HyperLogLog;
+import com.github.ddth.hll.IHLL;
 
 /**
  * This {@link IHLL} utilizes AddThis Stream's library as the underlying
@@ -24,6 +25,24 @@ public class AtsHLL implements IHLL {
 
     public AtsHLL(int log2m) {
         this.log2m = log2m;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public AtsHLL clone() {
+        try {
+            AtsHLL clone = (AtsHLL) super.clone();
+            if (hll != null) {
+                if (hll != null) {
+                    clone.init(this.toBytes());
+                }
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -76,7 +95,7 @@ public class AtsHLL implements IHLL {
 
     private static int reflectGetLog2m(HyperLogLog hll) {
         try {
-            Field field = HyperLogLog.class.getField("log2m");
+            Field field = HyperLogLog.class.getDeclaredField("log2m");
             field.setAccessible(true);
             Object value = field.get(hll);
             return value instanceof Number ? ((Number) value).intValue() : 0;
