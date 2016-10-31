@@ -9,7 +9,7 @@
 
     <!-- <groupId>com.github.ddth</groupId> -->
     <artifactId>ddth-simplehll</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>ddth-simplehll</name>
